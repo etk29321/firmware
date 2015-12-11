@@ -35,16 +35,12 @@
 #include "Display.h"
 #include "PiLinkHandlers.h"
 #include "UI.h"
-<<<<<<< HEAD
-#include "Actuator.h"
 #include <algorithm>  //provides remove_if
-=======
 #include "Buzzer.h"
 #include "ActuatorInterfaces.h"
 #include "ActuatorMocks.h"
 #include "Control.h"
 #include "json_writer.h"
->>>>>>> upstream/master
 
 #if BREWPI_SIMULATE
 #include "Simulator.h"
@@ -404,11 +400,7 @@ void PiLink::sendJsonTemp(const char* name, const temp_t & temp)
 	char tempString[9];
 	char * withoutSpaces = temp.toTempString(tempString, 2, 9, tempControl.cc.tempFormat, true);
 	printJsonName(name);
-<<<<<<< HEAD
 	curStream->print(tempString);
-=======
-	piStream.print(withoutSpaces);
->>>>>>> upstream/master
 }
 
 void PiLink::printTemperatures(void){
@@ -655,11 +647,7 @@ int readNext()
 			return -1;
 		}
 	}
-<<<<<<< HEAD
 	return curStream->read();
-=======
-	return piStream.read();
->>>>>>> upstream/master
 }
 /**
  * Parses a token from the piStream.

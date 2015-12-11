@@ -86,7 +86,6 @@ void setup()
 
     logDebug("started");
 
-<<<<<<< HEAD
 #ifdef PARTICLE_WIFI
     bool success = mdns.setHostname(System.deviceID());
     if (success) {
@@ -103,10 +102,7 @@ void setup()
 #endif
 
 
-    uint32_t start = millis();
-=======
     uint32_t start = ticks.millis();
->>>>>>> upstream/master
     uint32_t delay = ui.showStartupPage();
     while (ticks.millis()-start <= delay) {
         ui.ticks();
@@ -137,33 +133,15 @@ void brewpiLoop(void)
         
     if(!ui.inStartup() && (ticks.millis() - lastUpdate >= (1000))) { //update settings every second
 		lastUpdate = ticks.millis();
-<<<<<<< HEAD
-			
-		tempControl.updateTemperatures();
-		tempControl.detectPeaks();
-		tempControl.updatePID();
-		oldState = tempControl.getState();
-		tempControl.updateState();
-		if(oldState != tempControl.getState()){
-			piLink.printTemperatures(); // add a data point at every state transition
-		}
-		tempControl.updateOutputs();
-
+		control.update();
 		ui.update();
 	}	
 
-	//listen for incoming serial connections while waiting to update
-	piLink.receive();
 #ifdef PARTICLE_WIFI
     mdns.processQueries();
 #endif
-=======
-		control.update();
-        ui.update();
-    }
 
     control.updateActuators(); // update actuators as often as possible for PWM
->>>>>>> upstream/master
 
     //listen for incoming serial connections while waiting to update
     piLink.receive();

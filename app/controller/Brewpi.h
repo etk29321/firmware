@@ -20,11 +20,6 @@
 
 #pragma once
 
-<<<<<<< HEAD
-//#define BREWPI_LOG_DEBUG 1
-=======
-
->>>>>>> upstream/master
 // have to use two levels of macro expansion to convert a symbol to a string. see http://gcc.gnu.org/onlinedocs/cpp/Stringification.html
 #ifndef stringify
 #define stringify(s) _stringifyDo(s)
