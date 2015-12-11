@@ -20,12 +20,16 @@
 
 #pragma once
 
+<<<<<<< HEAD
 //#define BREWPI_LOG_DEBUG 1
+=======
+
+>>>>>>> upstream/master
 // have to use two levels of macro expansion to convert a symbol to a string. see http://gcc.gnu.org/onlinedocs/cpp/Stringification.html
+#ifndef stringify
 #define stringify(s) _stringifyDo(s)
 #define _stringifyDo(s) #s
-
-
+#endif
 // Most pins are only conditionally defined here, allowing definitions to be provided in Config.h for
 // local overrides
 enum {
@@ -43,7 +47,6 @@ enum {
 #define BREWPI_BOARD_PHOTON 'y'
 #define BREWPI_BOARD_UNKNOWN '?'
 
-bool platform_init();
 
 /*
  * Defines global config for the brewpi project. This file is included in every file in the project to ensure conditional
@@ -67,3 +70,4 @@ bool platform_init();
 #endif
 #include "AppConfigDefault.h"
 
+#define VERSION_STRING "0.4.0"
